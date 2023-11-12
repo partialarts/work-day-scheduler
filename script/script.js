@@ -1,27 +1,43 @@
 var currentDate = $("#currentDay");
-var formattedDate = dayjs().format('dddd, D MMMM ');
+var currentHour = dayjs().format("H");
+// var currentHour = '9';
+var formattedDate = dayjs().format("dddd, D MMMM");
 currentDate.text(formattedDate)
+console.log(currentHour)
 
-var calendarElements = function() {
+var calendarElements = function () {
     for (var i = 9; i < 18; i++) {
         var hourBlock = $('<div>');
         var hourText = $('<div>');
+        var hourTextInput = $('<textarea>');
         hourBlock.addClass('row time-block');
         hourBlock.attr("id", "hour" + i);
         hourText.addClass("col hour")
+        hourTextInput.addClass('col-8 col-md-10 description');
+        hourTextInput.attr('rows', '3');
         if (i < 12) {
             hourText.text(i + 'AM');
-          } else if (i === 12) {
+        } else if (i === 12) {
             hourText.text(i + 'PM');
-          } else {
+        } else {
             hourText.text(i - 12 + 'PM');
-          }
-          $(".container").append(hourBlock);
-          hourBlock.append(hourText);
-      }
-}
+        }
 
-calendarElements();
+        if (i == currentHour) {
+            hourTextInput.attr("class", "present col-8 text");
+        } else if (i < currentHour) {
+            hourTextInput.attr("class", "past col-8 text");
+        } else if (i > currentHour) {
+            hourTextInput.attr("class", "future col-8 text");
+        };
+
+        $(".container").append(hourBlock);
+        hourBlock.append(hourText);
+        hourBlock.append(hourTextInput)
+
+    }
+}
+    calendarElements();
 
 //Potentially get calendar elements from bootstrap
 
