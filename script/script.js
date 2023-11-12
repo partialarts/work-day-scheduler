@@ -13,8 +13,8 @@ var calendarElements = function () {
         var saveIcn = $("<i>")
         hourBlock.addClass("row time-block");
         hourBlock.attr("id", "hour" + i);
-        hourText.addClass("col hour")
-        hourTextInput.addClass("col-8")
+        hourText.addClass("col-md-1 hour py-2")
+        hourTextInput.addClass("col-8 col-md-10")
         saveBtn.addClass("btn saveBtn col-md-1")
         saveBtn.removeClass("btn:hover")
         saveIcn.addClass('fas fa-save');
@@ -43,6 +43,10 @@ var calendarElements = function () {
     }
 }
     calendarElements();
+
+    saveBtn.on("click", function () {
+        localStorage.setItem(timeblockRow.id, timeblockText.value);
+      });
 
 //Potentially get calendar elements from bootstrap
 

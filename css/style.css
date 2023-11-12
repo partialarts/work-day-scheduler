@@ -70,5 +70,6 @@ header {
 
 .btn:hover {
   background-color: #06aed5;
+  border-left: 1px solid black;
 }
 
