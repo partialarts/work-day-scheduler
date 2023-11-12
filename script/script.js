@@ -3,11 +3,21 @@ var formattedDate = dayjs().format('dddd, D MMMM ');
 currentDate.text(formattedDate)
 
 var calendarElements = function() {
-    for (var i = 0; i < 9; i++) {
+    for (var i = 9; i < 18; i++) {
         var hourBlock = $('<div>');
+        var hourText = $('<div>');
         hourBlock.addClass('row time-block');
-        hourBlock.attr("id", "hour-" + i);
-        $(".container").append(hourBlock);
+        hourBlock.attr("id", "hour" + i);
+        hourText.addClass("col hour")
+        if (i < 12) {
+            hourText.text(i + 'AM');
+          } else if (i === 12) {
+            hourText.text(i + 'PM');
+          } else {
+            hourText.text(i - 12 + 'PM');
+          }
+          $(".container").append(hourBlock);
+          hourBlock.append(hourText);
       }
 }
 
