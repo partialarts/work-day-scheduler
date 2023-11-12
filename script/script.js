@@ -1,39 +1,44 @@
 var currentDate = $("#currentDay");
 var currentHour = dayjs().format("H");
-// var currentHour = '9';
 var formattedDate = dayjs().format("dddd, D MMMM");
 currentDate.text(formattedDate)
 console.log(currentHour)
 
 var calendarElements = function () {
-    for (var i = 9; i < 18; i++) {
-        var hourBlock = $('<div>');
-        var hourText = $('<div>');
-        var hourTextInput = $('<textarea>');
-        hourBlock.addClass('row time-block');
+    for (var i = 9; i < 20; i++) {
+        var hourBlock = $("<div>");
+        var hourText = $("<div>");
+        var hourTextInput = $("<textarea>");
+        var saveBtn = $("<button>")
+        var saveIcn = $("<i>")
+        hourBlock.addClass("row time-block");
         hourBlock.attr("id", "hour" + i);
         hourText.addClass("col hour")
-        hourTextInput.addClass('col-8 col-md-10 description');
-        hourTextInput.attr('rows', '3');
+        hourTextInput.addClass("col-8")
+        saveBtn.addClass("btn saveBtn col-md-1")
+        saveBtn.removeClass("btn:hover")
+        saveIcn.addClass('fas fa-save');
         if (i < 12) {
-            hourText.text(i + 'AM');
+            hourText.text(i + "AM");
         } else if (i === 12) {
-            hourText.text(i + 'PM');
+            hourText.text(i + "PM");
         } else {
-            hourText.text(i - 12 + 'PM');
+            hourText.text(i - 12 + "PM");
         }
 
         if (i == currentHour) {
-            hourTextInput.attr("class", "present col-8 text");
+            hourTextInput.addClass("present");
         } else if (i < currentHour) {
-            hourTextInput.attr("class", "past col-8 text");
+            hourTextInput.addClass("past");
         } else if (i > currentHour) {
-            hourTextInput.attr("class", "future col-8 text");
+            hourTextInput.addClass("future");
         };
 
         $(".container").append(hourBlock);
         hourBlock.append(hourText);
-        hourBlock.append(hourTextInput)
+        hourBlock.append(hourTextInput);
+        hourBlock.append(saveBtn);
+        saveBtn.append(saveIcn);
 
     }
 }
