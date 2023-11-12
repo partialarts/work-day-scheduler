@@ -1,8 +1,17 @@
-var currentDate = dayjs();
-var formattedDate = currentDate.format('YYYY-MM-DD HH:mm:ss');
-console.log(formattedDate);
+var currentDate = $("#currentDay");
+var formattedDate = dayjs().format('dddd, D MMMM ');
+currentDate.text(formattedDate)
 
-// var currentDate = getElementFromID.currentDay
+var calendarElements = function() {
+    for (var i = 0; i < 9; i++) {
+        var hourBlock = $('<div>');
+        hourBlock.addClass('row time-block');
+        hourBlock.attr("id", "hour-" + i);
+        $(".container").append(hourBlock);
+      }
+}
+
+calendarElements();
 
 //Potentially get calendar elements from bootstrap
 
