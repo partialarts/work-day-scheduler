@@ -2,7 +2,6 @@ var currentDate = $("#currentDay");
 var currentHour = dayjs().format("H");
 var formattedDate = dayjs().format("dddd, D MMMM");
 currentDate.text(formattedDate)
-console.log(currentHour)
 
 var calendarElements = function () {
     for (var i = 9; i < 20; i++) {
@@ -16,7 +15,7 @@ var calendarElements = function () {
         hourText.addClass("col-md-1 hour py-2")
         hourTextInput.addClass("col-8 col-md-10")
         saveBtn.addClass("btn saveBtn col-md-1")
-        saveBtn.removeClass("btn:hover")
+        saveBtn.attr("id", "save" + i);
         saveIcn.addClass('fas fa-save');
         if (i < 12) {
             hourText.text(i + "AM");
@@ -35,18 +34,27 @@ var calendarElements = function () {
         };
 
         $(".container").append(hourBlock);
-        hourBlock.append(hourText);
-        hourBlock.append(hourTextInput);
-        hourBlock.append(saveBtn);
+        hourBlock.append(hourText, hourTextInput, saveBtn);
         saveBtn.append(saveIcn);
-
     }
 }
-    calendarElements();
 
-    saveBtn.on("click", function () {
-        localStorage.setItem(timeblockRow.id, timeblockText.value);
+calendarElements();
+
+$(document).ready(function () {
+
+    $(".saveBtn").on("click", function (event) {
+        event.preventDefault();
+        var eventTime = $(this).siblings(".hour").text();
+        var textInput = $(this).siblings("textarea").val();
+        localStorage.setItem(eventTime, textInput);
+        console.log(eventTime + textInput);
       });
+
+    
+});
+
+
 
 //Potentially get calendar elements from bootstrap
 
