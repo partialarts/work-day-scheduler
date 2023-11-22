@@ -63,13 +63,23 @@ header {
   color: white;
 }
 
+/* Overwrite Bootstrap classes */
 .saveBtn i:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
 
+.btn {
+  background-color: #06aed5;
+}
+
 .btn:hover {
   background-color: #06aed5;
+  color: white;
   border-left: 1px solid black;
+}
+
+#clearBtn:hover {
+  border-left: none;
 }
 
