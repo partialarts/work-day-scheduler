@@ -6,7 +6,7 @@ currentDate.text(formattedDate) // Display the date as text in the #currentDay I
 
 // Variable for the clear button
 var clearBtn = $("<button>")
-clearBtn.addClass("btn mt-3 mb-2"); // Adds class of btn
+clearBtn.addClass("btn mt-3 mb-3"); // Adds class of btn
 clearBtn.attr("id", "clearBtn"); // Adds ID of clear to button
 $(clearBtn).text("Clear Calendar") // Apply text to clear button
 $("header").append(clearBtn) // Append to header
