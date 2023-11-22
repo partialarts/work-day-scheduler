@@ -6,7 +6,7 @@ currentDate.text(formattedDate) // Display the date as text in the #currentDay I
 
 // Variable for the clear button
 var clearBtn = $("<button>")
-clearBtn.addClass("btn mt-4"); // Adds class of btn
+clearBtn.addClass("btn mt-3 mb-2"); // Adds class of btn
 clearBtn.attr("id", "clearBtn"); // Adds ID of clear to button
 $(clearBtn).text("Clear Calendar") // Apply text to clear button
 $("header").append(clearBtn) // Append to header
@@ -21,9 +21,9 @@ var generateCalendar = function () {
         var saveIcn = $("<i>") // Variable for the icon element
         hourBlock.addClass("row time-block"); // Set classes to main row container
         hourBlock.attr("id", "hour" + i); // Set ID of hour+i so each container has unique attribute
-        hourText.addClass("col-md-1 hour py-2") // Set bootstrap class for first column with padding
-        hourTextInput.addClass("col-8 col-md-10") // Set bootstrap class for second column
-        saveBtn.addClass("btn saveBtn col-md-1") // Set bootstrap class for third column
+        hourText.addClass("col-1 hour py-2") // Set bootstrap class for first column with padding
+        hourTextInput.addClass("col-8 col-10") // Set bootstrap class for second column
+        saveBtn.addClass("btn saveBtn col-1") // Set bootstrap class for third column
         saveBtn.attr("id", "save" + i); // Set ID of save+i so each saveBtn has unique attribute
         saveIcn.addClass('fas fa-save'); // FontAwesome classes for save icon
 
